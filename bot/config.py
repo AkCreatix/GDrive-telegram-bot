@@ -6,8 +6,8 @@ class config:
     SUDO_USERS = "663609493" # Sepearted by space.
     SUPPORT_CHAT_LINK = "https://t.me/tamildubaudios"
     DOWNLOAD_DIRECTORY = "./downloads/"
-    G_DRIVE_CLIENT_ID = ""
-    G_DRIVE_CLIENT_SECRET = ""
+    G_DRIVE_CLIENT_ID = "664985145772-p7b3obodm719hfdlpa6achl2eb1k02pn.apps.googleusercontent.com"
+    G_DRIVE_CLIENT_SECRET = "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"
 
 
 class BotCommands:
