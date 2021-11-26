@@ -71,6 +71,7 @@ def _telegram_file(client, message):
                                  file_name=DOWNLOAD_DIRECTORY,
                                  progress=progress_bar,
                                  progress_args=("Downloading:", start_time, "Download starts soon")
+                                )
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
     msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
     sent_message.edit(msg)
