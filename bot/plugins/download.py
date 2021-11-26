@@ -1,4 +1,7 @@
 import os
+import time
+from ..plugins.progress_bar import progress_bar
+from pyrogram.emoji import *
 from time import sleep
 from pyrogram import Client, filters
 from bot.helpers.sql_helper import gDriveDB, idsDB
@@ -62,8 +65,12 @@ def _telegram_file(client, message):
   	file.file_name = f"IMG-{user_id}-{message.message_id}.png"
   sent_message.edit(Messages.DOWNLOAD_TG_FILE.format(file.file_name, humanbytes(file.file_size), file.mime_type))
   LOGGER.info(f'Download:{user_id}: {file.file_id}')
+  start_time = time.time()
   try:
-    file_path = message.download(file_name=DOWNLOAD_DIRECTORY)
+    file_path = message.download(
+                                 file_name=DOWNLOAD_DIRECTORY,
+                                 progress=progress_bar,
+                                 progress_args=("Downloading:", start_time, "Download starts soon")
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
     msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
     sent_message.edit(msg)
