@@ -2,7 +2,7 @@ class config:
     BOT_TOKEN = "2141423450:AAHqc-LJd2rQ9oCaM-u4l31y7jyBijerOy4"
     APP_ID = "8996901"
     API_HASH = "d4dbd0395915c8993dc705a214b3c217"
-    DATABASE_URL = "postgres://yxkbfubfdlppfc:7381d24d4bfe598952bdb28e73c0cee326c86b22b4d86bba540bced1865f9134@ec2-3-230-82-215.compute-1.amazonaws.com:5432/d4a8iefiupa7f1"
+    DATABASE_URL = "postgres://hdbzawrclacwbb:a0ec7b8e71644229b02b2574f24e0d95eae9c72b1aee72f9b4f1fecf8033b3ba@ec2-184-73-243-101.compute-1.amazonaws.com:5432/daca4amaqepfro"
     SUDO_USERS = "663609493" # Sepearted by space.
     SUPPORT_CHAT_LINK = "https://t.me/tamildubaudios"
     DOWNLOAD_DIRECTORY = "./downloads/"
