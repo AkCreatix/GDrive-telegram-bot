@@ -1,6 +1,6 @@
 import os
 import time
-from ..plugins.progress_bar import progress_bar
+from bot.plugins.progress_bar import progress_bar
 from pyrogram.emoji import *
 from time import sleep
 from pyrogram import Client, filters
@@ -70,7 +70,7 @@ def _telegram_file(client, message):
     file_path = message.download(
                                  file_name=DOWNLOAD_DIRECTORY,
                                  progress=progress_bar,
-                                 progress_args=("Downloading:", start_time, "Download starts soon")
+                                 progress_args=("Downloading:", start_time, sent_message)
                                 )
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
     msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
