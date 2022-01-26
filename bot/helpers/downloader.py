@@ -15,12 +15,8 @@ def download_file(url, dl_path,sent_message):
     dl = SmartDL(url, dl_path, progress_bar=False)
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start(blocking=False)
-    downloaded=dl.get_dl_size(human=True)
     while not dl.isFinished():
-        downloaded=str(dl.get_dl_size(human=True))
-        if downloaded==None:
-           downloaded="Unknown"
-        sent_message.edit_text("Downloading...",str(round(dl.get_progress()*100)), 'Finished: ',str(downloaded))
+        sent_message.edit_text("Downloading...",str(round(dl.get_progress()*100)))
         sent_message.edit_text('⏳')
      #  time.sleep(0.2)
     return True, dl.get_dest()
