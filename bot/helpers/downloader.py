@@ -1,4 +1,5 @@
 import os
+import math
 import time
 import wget
 import glob
@@ -11,11 +12,11 @@ from pyrogram import Client, filters
 
 def download_file(url, dl_path,sent_message):
   try:
-    dl = SmartDL(url, dl_path, progress_bar=False)
+    dl = SmartDL(url, dl_path, progress_bar=True)
     LOGGER.info(f'Downloading: {url} in {dl_path}')
-    dl.start()
+    dl.start(blocking=False)
     while not dl.isFinished():
-        sent_message.edit(int(dl.get_progress()*100))
+        sent_message.edit(round((dl.get_progress()*100),1),"% Completed")
     return True, dl.get_dest()
   except HTTPError as error:
     return False, error
