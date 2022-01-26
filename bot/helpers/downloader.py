@@ -7,15 +7,15 @@ from pySmartDL import SmartDL
 from urllib.error import HTTPError
 from youtube_dl import DownloadError
 from bot import DOWNLOAD_DIRECTORY, LOGGER
+from pyrogram import Client, filters
 
-
-def download_file(url, dl_path, message):
+def download_file(url, dl_path,sent_message):
   try:
-    dl = SmartDL(url, dl_path, progress_bar=True)
+    dl = SmartDL(url, dl_path, progress_bar=False)
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start(blocking=False)
     while not dl.isFinished():
-        await message.reply_text(dl.get_progress()*100)
+        sent_message.edit(dl.get_progress()*100)
         print("Speed: %s" % dl.get_speed(human=True))
         print("Already downloaded: %s" % dl.get_dl_size(human=True))
         print("Eta: %s" % dl.get_eta(human=True))
