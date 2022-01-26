@@ -12,9 +12,9 @@ from pyrogram import Client, filters
 
 def download_file(url, dl_path,sent_message):
   try:
-    dl = SmartDL(url, dl_path, progress_bar=True)
+    dl = SmartDL(url, dl_path, progress_bar=False)
     LOGGER.info(f'Downloading: {url} in {dl_path}')
-    dl.start(blocking=False)
+    dl.start()
     while not dl.isFinished():
         sent_message.edit(round(dl.get_progress()*100,1))
     return True, dl.get_dest()
