@@ -17,7 +17,8 @@ def download_file(url, dl_path,sent_message):
     dl.start(blocking=False)
     while not dl.isFinished():
         sent_message.edit_text(str(dl.get_progress()*100))
-        time.sleep(0.2)
+        sent_message.edit_text('😊')
+     #  time.sleep(0.2)
     return True, dl.get_dest()
   except HTTPError as error:
     return False, error
