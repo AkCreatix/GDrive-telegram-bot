@@ -16,7 +16,7 @@ def download_file(url, dl_path,sent_message):
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start(blocking=False)
     while not dl.isFinished():
-        sent_message.edit(round((dl.get_progress()*100),1),"% Completed")
+        sent_message.edit(round(dl.get_progress()*100,1))
     return True, dl.get_dest()
   except HTTPError as error:
     return False, error
