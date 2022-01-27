@@ -16,7 +16,7 @@ def download_file(url, dl_path,sent_message):
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start(blocking=False)
     while not dl.isFinished():
-        sent_message.edit_text(str(dl.get_dl_size(human=True)),str(dl.get_progress()*100)) )
+        sent_message.edit_text(str(dl.get_dl_size(human=True)),str(dl.get_progress()*100)) 
        # str(dl.get_speed(human=True)),
       #  str(dl.get_dl_size(human=True)),
      #   str(dl.get_eta(human=True)),
