@@ -17,13 +17,15 @@ def download_file(url, dl_path,sent_message):
     dl.start(blocking=False)
     while not dl.isFinished():
         sent_message.edit_text(
-        text=f"Downloading Size: {dl.get_dl_size(human=True)} \n **Progress:** {dl.get_progress()*100}%"
+        text=f"**Speed:** {dl.get_speed(human=True)} \n**Downloading Size:** {dl.get_dl_size(human=True)} \n**Progress:** {dl.get_progress()*100}% \n**ETA:** {dl.get_eta(human=True)}"
         )
-        sent_message.edit_text("**Please Wait**")
-        time.sleep(0.5)
-       # str(dl.get_speed(human=True)),
-      #  str(dl.get_dl_size(human=True)),
-     #   str(dl.get_eta(human=True)),
+        sent_message.edit_text(
+        text="**Speed:**   \n**Downloading Size:**   \n**Progress:**   \n**ETA:**  "
+        )
+        #time.sleep(0.2)
+       # str(),
+      #  str(),
+     #   str(),
       #  str(dl.get_progress()*100)) )
         #print("Status: %s" % dl.get_status()),
         #print("\n"*2+"="*50+"\n"*2)
