@@ -17,16 +17,16 @@ def download_file(url, dl_path,sent_message):
     dl.start(blocking=False)
     while not dl.isFinished():
         sent_message.edit_text(
-text=f"Downloading Size: {dl.get_dl_size(human=True)} \n **Progress:** {dl.get_progress()*100}%"
+        text=f"Downloading Size: {dl.get_dl_size(human=True)} \n **Progress:** {dl.get_progress()*100}%"
+        )
+        sent_message.edit_text("**Please Wait**")
+        time.sleep(0.5)
        # str(dl.get_speed(human=True)),
       #  str(dl.get_dl_size(human=True)),
      #   str(dl.get_eta(human=True)),
       #  str(dl.get_progress()*100)) )
-        sent_message.edit_text("**Please Wait**")
         #print("Status: %s" % dl.get_status()),
         #print("\n"*2+"="*50+"\n"*2)
-      #  )
-        time.sleep(0.5)
     return True, dl.get_dest()
   except HTTPError as error:
     return False, error
