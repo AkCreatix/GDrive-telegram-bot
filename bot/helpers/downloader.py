@@ -16,7 +16,15 @@ def download_file(url, dl_path,sent_message):
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start(blocking=False)
     while not dl.isFinished():
-        sent_message.edit_text(str(dl.get_eta(human=True)))
+        sent_message.edit_text(str(
+        print("Speed: %s" % dl.get_speed(human=True))
+        print("Already downloaded: %s" % dl.get_dl_size(human=True))
+        print("Eta: %s" % dl.get_eta(human=True))
+        print("Progress: %d%%" % (dl.get_progress()*100))
+        print("Progress bar: %s" % dl.get_progress_bar())
+        print("Status: %s" % dl.get_status())
+        print("\n"*2+"="*50+"\n"*2)
+        ))
         time.sleep(0.5)
     return True, dl.get_dest()
   except HTTPError as error:
